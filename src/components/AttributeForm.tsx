@@ -45,7 +45,7 @@ function AttributeForm({
 
   React.useEffect(() => {
     if (isSubmitSuccessful) {
-      reset({ attributeName: "", weight: 100 });
+      reset({ attributeName: "" });
     }
   }, [isSubmitSuccessful, reset]);
 
@@ -82,7 +82,6 @@ function AttributeForm({
                 min: 0,
                 max: 100,
               })}
-              defaultValue={100}
             />
             {errors.weight && (
               <span className="bg-yellow-400 rounded">

@@ -4,10 +4,15 @@ import { Handle, Position } from "reactflow";
 type WinnerNodeProps = {
   data: {
     optionName?: string;
+    show: boolean;
   };
 };
 
 function WinnerNode({ data }: WinnerNodeProps) {
+  if (!data.show) {
+    return null;
+  }
+
   return (
     <div className="border border-solid p-4 drop-shadow-sm">
       <h3>Winner</h3>

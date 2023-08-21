@@ -139,6 +139,7 @@ function App() {
       position: { x: 300, y: 400 + attributes.length * 50 },
       data: {
         optionName: winner?.name,
+        show: options.length > 0 && attributes.length > 0,
       },
     },
   ];
