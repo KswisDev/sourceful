@@ -1,7 +1,7 @@
 import React from "react";
 import { Handle, Position, useOnSelectionChange } from "reactflow";
 import Slider from "./Slider";
-import type { option } from "../types/sharedTypes";
+import type { attribute, option } from "../types/sharedTypes";
 
 type OptionNodeProps = {
   id: string;
@@ -29,7 +29,7 @@ function OptionNode({ id, data }: OptionNodeProps) {
     <div className="border border-solid p-4 drop-shadow-sm">
       <h3>{data.option?.name}</h3>
       <hr />
-      {data.option?.attributes.map((so: any) => {
+      {data.option?.attributes.map((so: attribute) => {
         return (
           <div key={so.name}>
             <Slider

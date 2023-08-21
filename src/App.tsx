@@ -10,31 +10,12 @@ import OptionNode from "./components/OptionNode";
 import WinnerNode from "./components/WinnerNode";
 import AttributeForm from "./components/AttributeForm";
 import OptionForm from "./components/OptionForm";
-
-var numeral = require("numeral");
+import {calculateScore, calculateWinner} from './utils'
 
 const nodeTypes = {
   attribute: AttributeNode,
   option: OptionNode,
   winner: WinnerNode,
-};
-
-const calculateScore = (optionAttributes: attribute[]) => {
-  let totalScore = 0;
-  optionAttributes.forEach((attr) => {
-    totalScore += attr.value * (attr.weight / 100);
-  });
-  return Number(numeral(totalScore).format("0.00"));
-};
-
-const calculateWinner = (options: option[]) => {
-  const winner =
-    options.length > 0
-      ? options.reduce(function (prev, current) {
-          return prev.score > current.score ? prev : current;
-        })
-      : null;
-  return winner;
 };
 
 function App() {
@@ -144,8 +125,6 @@ function App() {
     },
   ];
 
-  // add tests
-  // video demo
   const initialEdges = () => {
     let winnerEdges = [];
     const initialEdges = attributes.flatMap((attr, attrIndex) => {
