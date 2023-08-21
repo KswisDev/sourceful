@@ -1,5 +1,5 @@
 import React from "react";
-import { Handle, Position, useOnSelectionChange } from "reactflow";
+import { Handle, Position } from "reactflow";
 import Slider from "./Slider";
 import type { attribute, option } from "../types/sharedTypes";
 
@@ -19,11 +19,6 @@ function OptionNode({ id, data }: OptionNodeProps) {
   const handleInputChange = (attributeId: string, value: number) => {
     data.handleInputChange(attributeId, data.option.id, value);
   };
-
-  useOnSelectionChange({
-    onChange: ({ nodes, edges }) =>
-      console.log("changed selection", nodes, edges),
-  });
 
   return (
     <div className="border border-solid p-4 drop-shadow-sm">

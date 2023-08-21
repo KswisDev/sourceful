@@ -89,7 +89,7 @@ function App() {
   const initialNodes = [
     ...attributes.map((a, index) => {
       return {
-        id: `attr-${index}`,
+        id: a.id,
         type: "attribute",
         position: { x: index * 200, y: 0 },
         selectable: true,
@@ -103,7 +103,7 @@ function App() {
     }),
     ...options.map((opt, index) => {
       return {
-        id: `opt-${index}`,
+        id: opt.id,
         type: "option",
         position: { x: index * 200, y: 200 },
         selectable: true,
@@ -162,6 +162,7 @@ function App() {
         >
           Add option
         </button>
+        <p className="text-sm">Use backspace to delete a node</p>
       </section>
       {showOptionForm && (
         <OptionForm

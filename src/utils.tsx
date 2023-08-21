@@ -26,8 +26,8 @@ const initialEdges = (attributes: attribute[], options: option[]) => {
     return options.map((opt, optIndex) => {
       return {
         id: `attr-${attrIndex}-opt-${optIndex}`,
-        source: `attr-${attrIndex}`,
-        target: `opt-${optIndex}`,
+        source: `${attr.id}`,
+        target: `${opt.id}`,
         sourceHandle: `handle-${attr.id}`,
         targetHandle: `handle-${opt.id}`,
       };
@@ -37,7 +37,7 @@ const initialEdges = (attributes: attribute[], options: option[]) => {
   for (let i = 0; i < options.length; i++) {
     winnerEdges.push({
       id: `opt-${i}-winner`,
-      source: `opt-${i}`,
+      source: options[i].id,
       target: `winner-node`,
     });
   }
