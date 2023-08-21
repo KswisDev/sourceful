@@ -20,4 +20,29 @@ const calculateWinner = (options: option[]) => {
   return winner;
 };
 
-export { calculateScore, calculateWinner };
+const initialEdges = (attributes: attribute[], options: option[]) => {
+  let winnerEdges = [];
+  const initialEdges = attributes.flatMap((attr, attrIndex) => {
+    return options.map((opt, optIndex) => {
+      return {
+        id: `attr-${attrIndex}-opt-${optIndex}`,
+        source: `attr-${attrIndex}`,
+        target: `opt-${optIndex}`,
+        sourceHandle: `handle-${attr.id}`,
+        targetHandle: `handle-${opt.id}`,
+      };
+    });
+  });
+
+  for (let i = 0; i < options.length; i++) {
+    winnerEdges.push({
+      id: `opt-${i}-winner`,
+      source: `opt-${i}`,
+      target: `winner-node`,
+    });
+  }
+
+  return [...initialEdges, ...winnerEdges];
+};
+
+export { calculateScore, calculateWinner, initialEdges };
